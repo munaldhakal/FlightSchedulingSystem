@@ -1,2 +1,0 @@
-# FlightSchedulingSystem
-Book the flight
