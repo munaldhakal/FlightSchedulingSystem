@@ -17,8 +17,8 @@ public class TravelInfoDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TravelInfoDto(String tripType, int noOfAdults, int noOfChildren, String departurePlace, Date departureDate,
-			Date returnDate, String returnPlace) {
+	public TravelInfoDto(Long id, String tripType, int noOfAdults, int noOfChildren, String departurePlace,
+			Date departureDate, Date returnDate, String returnPlace) {
 		super();
 		this.tripType = tripType;
 		this.noOfAdults = noOfAdults;
@@ -27,6 +27,7 @@ public class TravelInfoDto {
 		this.departureDate = departureDate;
 		this.returnDate = returnDate;
 		this.returnPlace = returnPlace;
+		this.id = id;
 	}
 
 	public String getTripType() {
