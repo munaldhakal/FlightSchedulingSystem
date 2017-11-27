@@ -12,7 +12,11 @@ public class RegisterUserDto {
 	public RegisterUserDto() {
 		super();
 	}
-
+	
+	public RegisterUserDto(Long id) {
+		this.id=id;
+	}
+	
 	public RegisterUserDto(String userType, String userName, String password, String email, String phoneNumber,
 			Long id) {
 		super();
