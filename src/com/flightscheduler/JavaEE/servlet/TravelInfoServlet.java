@@ -86,7 +86,7 @@ public class TravelInfoServlet extends HttpServlet {
 					rs.getDate("returnDate"),
 					rs.getString("returnPlace")
 					);
-			travelInfoDtoList.add(storeTravelInfo)
+			travelInfoDtoList.add(storeTravelInfo);
 		}
 			
 		} catch (SQLException e) {

@@ -16,15 +16,19 @@ import com.flightscheduler.JavaEE.model.RegisterUser;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	RegisterUser registerUser = new RegisterUser();
-	RegisterUserDto registerUserDto = new RegisterUserDto();
+	
 
 	public RegisterServlet() {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		RegisterUser registerUser = new RegisterUser();
+		RegisterUserDto registerUserDto = new RegisterUserDto();
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		registerUserDto.setUserType(request.getParameter("userType"));
 		registerUser.setUserType(registerUserDto.getUserType());
@@ -37,11 +41,6 @@ public class RegisterServlet extends HttpServlet {
 		registerUserDto.setPhoneNumber(request.getParameter("phoneNumber"));
 		registerUser.setPhoneNumber(registerUserDto.getPhoneNumber());
 		SaveUserInfo.saveUser(registerUser);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
