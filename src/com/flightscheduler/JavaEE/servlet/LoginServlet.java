@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 				loginInfoDto.setUserType(userType);
 				request.setAttribute("loginInfoDto", loginInfoDto);
 				request.setAttribute("getUser", getUser);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("enternewdata.jsp").forward(request, response);
 			}
 			else {
 				PrintWriter printWriter= response.getWriter();
