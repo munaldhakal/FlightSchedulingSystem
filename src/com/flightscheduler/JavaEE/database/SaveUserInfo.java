@@ -11,7 +11,7 @@ public class SaveUserInfo {
 		Connection cn=RegisterUserDatabase.createRegisterUserDatabase();
 		try {
 			Statement st=cn.createStatement();
-			String query="insert into registeruser(userType,userName,password,email,phoneNumber)values('"+registerUser.getUserType()+"','"+registerUser.getUserName()+"','"+registerUser.getPassword()+"','"+registerUser.getEmail()+"','"+registerUser.getPassword()+"')";
+			String query="insert into registeruser(userType,userName,password,email,phoneNumber)values('"+registerUser.getUserType()+"','"+registerUser.getUserName()+"','"+registerUser.getPassword()+"','"+registerUser.getEmail()+"','"+registerUser.getPhoneNumber()+"')";
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
