@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,9 +26,6 @@ import com.flightscheduler.JavaEE.model.TravelInfo;
 @WebServlet("/TravelInfoServlet")
 public class TravelInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     TravelInfoDto travelInfoDto = new TravelInfoDto();
-     SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-     TravelInfo travelInfo = new TravelInfo();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,7 +35,12 @@ public class TravelInfoServlet extends HttpServlet {
     }
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
+        TravelInfoDto travelInfoDto = new TravelInfoDto();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        TravelInfo travelInfo = new TravelInfo();
+        String[] departureDate=request.getParameterValues("departureDate");
+        
+    	try {
 			travelInfoDto.setDepartureDate(formatter.parse(request.getParameter("departureDate")));
 		} catch (ParseException e) {
 			e.printStackTrace();
