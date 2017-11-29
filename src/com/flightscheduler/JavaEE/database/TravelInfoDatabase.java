@@ -10,7 +10,7 @@ public class TravelInfoDatabase {
 		Connection cn = CreateDatabase.createDatabase();
 		try {
 			Statement st = cn.createStatement();
-			String query = "create table if not exists travelinfo(id int(16) auto_increment,createdBy varchar(20),departurePlace varchar(20),destinationPlace varchar(20),departureDate Date1,PRIMARY KEY (id))";
+			String query = "create table if not exists travelinfo(id int(16) auto_increment,createdBy varchar(20),departurePlace varchar(20),arrivalPlace varchar(20),date Date,PRIMARY KEY (id),departureTime Time,arrivalTime Time,fare bigint(20),status varchar(7))";
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
