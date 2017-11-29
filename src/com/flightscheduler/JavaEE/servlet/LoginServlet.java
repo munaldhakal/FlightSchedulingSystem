@@ -18,6 +18,7 @@ import com.flightscheduler.JavaEE.dto.LoginInfoDto;
 import com.flightscheduler.JavaEE.dto.RegisterUserDto;
 import com.flightscheduler.JavaEE.model.LoginInfo;
 
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -43,8 +44,9 @@ public class LoginServlet extends HttpServlet {
     	response.getWriter().append("Served at: ").append(request.getContextPath());
     	Connection cn = CreateDatabase.createDatabase();
     	try {
+    		PrintWriter printWriter= response.getWriter();
 			Statement st = cn.createStatement();
-			String query = "select from table registeruser where userName='+userName+'&& userType='+userType+'&& password='+passsword+'";
+			String query = "select * from registeruser where userName='"+userName+"'&& userType='"+userType+"'&& password='"+password+"'";
 			ResultSet rs;
 			rs = st.executeQuery(query);
 			if(rs.next())
@@ -54,11 +56,13 @@ public class LoginServlet extends HttpServlet {
 				loginInfoDto.setUserName(userName);
 				loginInfoDto.setUserType(userType);
 				request.setAttribute("loginInfoDto", loginInfoDto);
-				request.setAttribute("getUser", getUser);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				
+				printWriter.println("Login Successful");
+				//request.setAttribute("getUser", getUser);
+				//request.getRequestDispatcher("enternewdata.jsp").forward(request, response);
 			}
 			else {
-				PrintWriter printWriter= response.getWriter();
+			//	PrintWriter printWriter= response.getWriter();
 				printWriter.println("User Not Found");
 			}
 		} catch (SQLException e) {
