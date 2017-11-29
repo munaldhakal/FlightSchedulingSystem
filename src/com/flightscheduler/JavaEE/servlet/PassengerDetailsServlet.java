@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.flightscheduler.JavaEE.database.SavePassengerDetails;
+import com.flightscheduler.JavaEE.database.SaveTravelInfo;
 import com.flightscheduler.JavaEE.dto.PassengerDetailsDto;
 import com.flightscheduler.JavaEE.model.PassengerDetails;
 
@@ -49,6 +51,11 @@ public class PassengerDetailsServlet extends HttpServlet {
 		passengerDetailsDto.setId(Long.parseLong(request.getParameter("id")));
 		PassengerDetails passengerDetails = new PassengerDetails();
 		passengerDetails.setTitle(passengerDetailsDto.getTitle());
+		passengerDetails.setFirstName(passengerDetailsDto.getFirstName());
+		passengerDetails.setLastName(passengerDetailsDto.getLastName());
+		passengerDetails.setMiddleName(passengerDetailsDto.getMiddleName());
+		passengerDetails.setId(passengerDetailsDto.getId());
+		SavePassengerDetails.savePassengerDetails(passengerDetails);
 		
 	}
 	

@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class TravelInfoDatabase {
 	
-	public static void createTravelInfoDatabase() {
+	public static Connection createTravelInfoDatabase() {
 		Connection cn = CreateDatabase.createDatabase();
 		try {
 			Statement st = cn.createStatement();
@@ -17,5 +17,6 @@ public class TravelInfoDatabase {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return cn;
 	}
 }
