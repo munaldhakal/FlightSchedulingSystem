@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,8 +39,6 @@ public class TravelInfoServlet extends HttpServlet {
         TravelInfoDto travelInfoDto = new TravelInfoDto();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
         TravelInfo travelInfo = new TravelInfo();
-        String[] departureDate=request.getParameterValues("departureDate");
-        
     	try {
 			travelInfoDto.setDepartureDate(formatter.parse(request.getParameter("departureDate")));
 		} catch (ParseException e) {

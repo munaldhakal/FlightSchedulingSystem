@@ -2,6 +2,7 @@ package com.flightscheduler.JavaEE.model;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
 public class TravelDetails {
 	private Long id;
@@ -16,8 +17,9 @@ public class TravelDetails {
 	public TravelDetails() {
 		super();
 	}
-	public TravelDetails(Long id, String departurePlace, String arrivalPlace, Date date, Time departureTime,
-			String status, Time arrivalTime, Long fare, String createdBy) {
+	public TravelDetails(Long id, String departurePlace, String arrivalPlace, Date date,
+			Time departureTime, String status, Time arrivalTime, Long fare,
+			String createdBy) {
 		super();
 		this.id = id;
 		this.departurePlace = departurePlace;
@@ -68,8 +70,8 @@ public class TravelDetails {
 	public Time getArrivalTime() {
 		return arrivalTime;
 	}
-	public void setArrivalTime(Time arrivalTiime) {
-		this.arrivalTime = arrivalTiime;
+	public void setArrivalTime(Time arrivalTime) {
+		this.arrivalTime = arrivalTime;
 	}
 	public Long getFare() {
 		return fare;

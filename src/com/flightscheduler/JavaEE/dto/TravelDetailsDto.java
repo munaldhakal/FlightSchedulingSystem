@@ -1,8 +1,26 @@
+/*************************************************************************
+ * 
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained here in is, and remains
+ * the property of Texas Imaginology and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * here in are proprietary to Texas Imaginology. Dissemination of this
+ * information or reproduction of this material is strictly forbidden unless
+ * prior written permission is obtained from Texas Imaginology.
+ * 
+ */
 package com.flightscheduler.JavaEE.dto;
 
 import java.sql.Time;
 import java.util.Date;
 
+/**
+ * <<Description Here>>
+ * @author Munal
+ * @version 
+ * @since , 30 Nov 2017
+ */
 public class TravelDetailsDto {
 	private Long id;
 	private String departurePlace;
@@ -15,9 +33,11 @@ public class TravelDetailsDto {
 	private String createdBy;
 	public TravelDetailsDto() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	public TravelDetailsDto(Long id, String departurePlace, String arrivalPlace, Date date, Time departureTime,
-			String status, Time arrivalTime, Long fare, String createdBy) {
+	public TravelDetailsDto(Long id, String departurePlace, String arrivalPlace,
+			Date date, Time departureTime, String status, Time arrivalTime, Long fare,
+			String createdBy) {
 		super();
 		this.id = id;
 		this.departurePlace = departurePlace;
@@ -83,6 +103,5 @@ public class TravelDetailsDto {
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-	
 	
 }
