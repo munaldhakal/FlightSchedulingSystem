@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.flightscheduler.JavaEE.database.SaveCardHolderDetails;
 import com.flightscheduler.JavaEE.dto.CardHolderDetailsDto;
 import com.flightscheduler.JavaEE.model.CardHolderDetails;
 
@@ -41,9 +42,8 @@ public class CardHolderDetailsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	CardHolderDetailsDto cardHolderDetailsDto = new CardHolderDetailsDto();
+	cardHolderDetailsDto.setDocumentId(Long.parseLong(request.getParameter("documentId")));
 	cardHolderDetailsDto.setId(Long.parseLong(request.getParameter("id")));
-	cardHolderDetailsDto.setNoOfAdults(Long.parseLong(request.getParameter("noOfAdults")));
-	cardHolderDetailsDto.setNoOfChildrens(Long.parseLong(request.getParameter("noOfChildrens")));
 	cardHolderDetailsDto.setChFirstName(request.getParameter("chFirstName"));
 	cardHolderDetailsDto.setChMiddleName(request.getParameter("chMiddleName"));
 	cardHolderDetailsDto.setChLastName(request.getParameter("chLastName"));
@@ -53,15 +53,14 @@ public class CardHolderDetailsServlet extends HttpServlet {
 	cardHolderDetailsDto.setFid(Long.parseLong(request.getParameter("fid")));
 	CardHolderDetails cardHolderDetails = new CardHolderDetails();
 	cardHolderDetails.setId(cardHolderDetailsDto.getId());
-	cardHolderDetails.setNoOfAdults(cardHolderDetailsDto.getNoOfAdults());
-	cardHolderDetails.setNoOfChildrens(cardHolderDetailsDto.getNoOfChildrens());
 	cardHolderDetails.setChFirstName(cardHolderDetailsDto.getChFirstName());
 	cardHolderDetails.setChMiddleName(cardHolderDetailsDto.getChMiddleName());
 	cardHolderDetails.setChLastName(cardHolderDetailsDto.getChLastName());
 	cardHolderDetails.setPhoneNumber(cardHolderDetailsDto.getPhoneNumber());
 	cardHolderDetails.setEmailAddress(cardHolderDetailsDto.getEmailAddress());
+	cardHolderDetails.setDocumentId(cardHolderDetailsDto.getDocumentId());
 	cardHolderDetails.setPid(cardHolderDetailsDto.getPid());
 	cardHolderDetails.setFid(cardHolderDetailsDto.getFid());
-	
+	SaveCardHolderDetails.saveCardHolderDetails(cardHolderDetails);
 	}
 }

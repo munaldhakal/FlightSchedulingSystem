@@ -31,8 +31,8 @@ public class TravelDetailsRequestDto {
 		this.fare = fare;
 		this.createdBy = createdBy;
 	}
-	public Long[] getId() {
-		return id;
+	public Long getId(int i) {
+		return id[i];
 	}
 	public void setId(Long[] id) {
 		this.id = id;

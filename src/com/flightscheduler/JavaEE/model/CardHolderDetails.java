@@ -1,9 +1,8 @@
 package com.flightscheduler.JavaEE.model;
 
 public class CardHolderDetails {
+private Long documentId;
 private Long id;
-private Long noOfAdults;
-private Long noOfChildrens;
 private String chFirstName;
 private String chMiddleName;
 private String chLastName;
@@ -15,12 +14,13 @@ public CardHolderDetails() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public CardHolderDetails(Long id, Long noOfAdults, Long noOfChildrens, String chFirstName, String chMiddleName,
-		String chLastName, Long phoneNumber, String emailAddress, Long pid, Long fid) {
+
+public CardHolderDetails(Long documentId, Long id, String chFirstName,
+		String chMiddleName, String chLastName, Long phoneNumber, String emailAddress,
+		Long pid, Long fid) {
 	super();
+	this.documentId = documentId;
 	this.id = id;
-	this.noOfAdults = noOfAdults;
-	this.noOfChildrens = noOfChildrens;
 	this.chFirstName = chFirstName;
 	this.chMiddleName = chMiddleName;
 	this.chLastName = chLastName;
@@ -29,23 +29,20 @@ public CardHolderDetails(Long id, Long noOfAdults, Long noOfChildrens, String ch
 	this.pid = pid;
 	this.fid = fid;
 }
+
+public Long getDocumentId() {
+	return documentId;
+}
+
+public void setDocumentId(Long documentId) {
+	this.documentId = documentId;
+}
+
 public Long getId() {
 	return id;
 }
 public void setId(Long id) {
 	this.id = id;
-}
-public Long getNoOfAdults() {
-	return noOfAdults;
-}
-public void setNoOfAdults(Long noOfAdults) {
-	this.noOfAdults = noOfAdults;
-}
-public Long getNoOfChildrens() {
-	return noOfChildrens;
-}
-public void setNoOfChildrens(Long noOfChildrens) {
-	this.noOfChildrens = noOfChildrens;
 }
 public String getChFirstName() {
 	return chFirstName;

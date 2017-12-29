@@ -1,12 +1,7 @@
 package com.flightscheduler.JavaEE.servlet;
 
 import java.io.IOException;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,36 +24,37 @@ public class TravelDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		TravelDetailsRequestDto travelDetailsRequestDto = new TravelDetailsRequestDto();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");		
 		String[] departureDate=request.getParameterValues("departureDate");
 		String[] departureTime=request.getParameterValues("departureTime");
 		String[] departurePlace=request.getParameterValues("departurePlace");
 		String[] arrivalTime=request.getParameterValues("arrivalTime");
 		String[] arrivalPlace=request.getParameterValues("arrivalPlace");
 		String[] fare=request.getParameterValues("fare");
+		String[] status=request.getParameterValues("status");
 		String createdBy=request.getParameter("createdBy");
+		System.out.println("Created by: "+createdBy);
+		PrintWriter out=response.getWriter();
+		response.setContentType("text/html");
+		out.println(createdBy);
 		travelDetailsRequestDto.setDate(departureDate);
 		travelDetailsRequestDto.setArrivalPlace(arrivalPlace);
 		travelDetailsRequestDto.setArrivalTime(arrivalTime);
 		travelDetailsRequestDto.setDepartureTime(departureTime);
+		travelDetailsRequestDto.setDeparturePlace(departurePlace);
 		travelDetailsRequestDto.setCreatedBy(createdBy);
 		travelDetailsRequestDto.setFare(fare);
+		travelDetailsRequestDto.setStatus(status);
 		int size =departurePlace.length;
 		TravelDetails travelDetails= new TravelDetails();
-		for(int i=0;i<=size;i++) {	
+		for(int i=0;i<=size-1;i++) {	
 			travelDetails.setDeparturePlace(travelDetailsRequestDto.getDeparturePlace(i));
 			travelDetails.setArrivalPlace(travelDetailsRequestDto.getArrivalPlace(i));
-			try {
-				travelDetails.setDate(formatter.parse(travelDetailsRequestDto.getDate(i)));
-			}
-			catch (ParseException e) {
-				e.printStackTrace();
-			}
-			travelDetails.setDepartureTime(Time.valueOf(travelDetailsRequestDto.getDepartureTime(i)));
-			travelDetails.setArrivalTime(Time.valueOf(travelDetailsRequestDto.getArrivalTime(i)));
+			travelDetails.setDate(travelDetailsRequestDto.getDate(i));
 			travelDetails.setFare(Long.parseLong(travelDetailsRequestDto.getFare(i)));
 			travelDetails.setStatus(travelDetailsRequestDto.getStatus(i));
 			travelDetails.setCreatedBy(travelDetailsRequestDto.getCreatedBy());
+			travelDetails.setDepartureTime(travelDetailsRequestDto.getDepartureTime(i));
+			travelDetails.setArrivalTime(travelDetailsRequestDto.getArrivalTime(i));
 			SaveTravelInfo.saveTravelInfo(travelDetails);
 		}					
 	}

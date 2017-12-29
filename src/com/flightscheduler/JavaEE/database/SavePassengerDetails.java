@@ -11,7 +11,7 @@ public class SavePassengerDetails {
 		Connection cn=PassengerDetailsDatabase.createPassengerDetailsDatabase();
 		try {
 			Statement st=cn.createStatement();
-			String query="insert into passengerdetails(id,title,firstName,middleName,lastName)values('"+passengerDetails.getId()+"','"+passengerDetails.getTitle()+"','"+passengerDetails.getFirstName()+"','"+passengerDetails.getMiddleName()+"','"+passengerDetails.getLastName()+"')";
+			String query="insert into passengerdetails(title,firstName,middleName,lastName)values('"+passengerDetails.getTitle()+"','"+passengerDetails.getFirstName()+"','"+passengerDetails.getMiddleName()+"','"+passengerDetails.getLastName()+"')";
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();

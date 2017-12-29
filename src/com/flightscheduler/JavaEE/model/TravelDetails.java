@@ -8,17 +8,18 @@ public class TravelDetails {
 	private Long id;
 	private String departurePlace;
 	private String arrivalPlace;
-	private Date date;
-	private Time departureTime;
+	private String date;
+	private String departureTime;
 	private String status;
-	private Time arrivalTime;
+	private String arrivalTime;
 	private Long fare;
 	private String createdBy;
 	public TravelDetails() {
 		super();
 	}
-	public TravelDetails(Long id, String departurePlace, String arrivalPlace, Date date,
-			Time departureTime, String status, Time arrivalTime, Long fare,
+	
+	public TravelDetails(Long id, String departurePlace, String arrivalPlace, String date,
+			String departureTime, String status, String arrivalTime, Long fare,
 			String createdBy) {
 		super();
 		this.id = id;
@@ -31,6 +32,7 @@ public class TravelDetails {
 		this.fare = fare;
 		this.createdBy = createdBy;
 	}
+
 	public Long getId() {
 		return id;
 	}
@@ -49,16 +51,16 @@ public class TravelDetails {
 	public void setArrivalPlace(String arrivalPlace) {
 		this.arrivalPlace = arrivalPlace;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-	public Time getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
-	public void setDepartureTime(Time departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 	public String getStatus() {
@@ -67,10 +69,10 @@ public class TravelDetails {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Time getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
-	public void setArrivalTime(Time arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 	public Long getFare() {

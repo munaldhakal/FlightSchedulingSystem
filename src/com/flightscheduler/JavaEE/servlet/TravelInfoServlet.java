@@ -34,7 +34,7 @@ public class TravelInfoServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    @Override
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TravelInfoDto travelInfoDto = new TravelInfoDto();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
@@ -44,18 +44,18 @@ public class TravelInfoServlet extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		travelInfoDto.setTripType(request.getParameter("tripType"));
+		//travelInfoDto.setTripType(request.getParameter("tripType"));
 		travelInfoDto.setNoOfAdults(Integer.parseInt(request.getParameter("noOfAdults")));
 		travelInfoDto.setNoOfChildren(Integer.parseInt(request.getParameter("noOfChildren")));
 		travelInfoDto.setDeparturePlace(request.getParameter("departurePlace"));
-		travelInfoDto.setReturnPlace(request.getParameter("returnPlace"));
-		try {
+		//travelInfoDto.setReturnPlace(request.getParameter("returnPlace"));
+		/*try {
 			travelInfoDto.setReturnDate(formatter.parse(request.getParameter("returnDate")));
 		} catch (ParseException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
-		Connection cn = CreateDatabase.createDatabase();
+	/*	Connection cn = CreateDatabase.createDatabase();
 		try {
 			Statement st= cn.createStatement();
 			
@@ -82,7 +82,7 @@ public class TravelInfoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
+		*/
 		
 		
 		

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.flightscheduler.JavaEE.database.SavePassengerDetails;
-import com.flightscheduler.JavaEE.database.SaveTravelInfo;
 import com.flightscheduler.JavaEE.dto.PassengerDetailsDto;
+import com.flightscheduler.JavaEE.dto.PassengerDetailsRequestDto;
 import com.flightscheduler.JavaEE.model.PassengerDetails;
 
 /**
@@ -42,22 +42,25 @@ public class PassengerDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		PassengerDetailsDto passengerDetailsDto = new PassengerDetailsDto();
-		passengerDetailsDto.setTitle(request.getParameter("title"));
-		passengerDetailsDto.setFirstName(request.getParameter("firstName"));
-		passengerDetailsDto.setLastName(request.getParameter("lastName"));
-		passengerDetailsDto.setMiddleName(request.getParameter("middleName"));
-		passengerDetailsDto.setLastName(request.getParameter("lastName"));
-		passengerDetailsDto.setId(Long.parseLong(request.getParameter("id")));
+		PassengerDetailsRequestDto passengerDetailsRequestDto = new PassengerDetailsRequestDto();
+		String[] title=request.getParameterValues("title");
+		String[] firstName=request.getParameterValues("firstName");
+		String[] middleName=request.getParameterValues("middleName");
+		String[] lastName=request.getParameterValues("lastName");
+		//String[] id=request.getParameterValues("id");
 		PassengerDetails passengerDetails = new PassengerDetails();
-		passengerDetails.setTitle(passengerDetailsDto.getTitle());
-		passengerDetails.setFirstName(passengerDetailsDto.getFirstName());
-		passengerDetails.setLastName(passengerDetailsDto.getLastName());
-		passengerDetails.setMiddleName(passengerDetailsDto.getMiddleName());
-		passengerDetails.setId(passengerDetailsDto.getId());
-		SavePassengerDetails.savePassengerDetails(passengerDetails);
-		
+		passengerDetailsRequestDto.setTitle(title);
+		passengerDetailsRequestDto.setFirstName(firstName);
+		passengerDetailsRequestDto.setLastName(lastName);
+		passengerDetailsRequestDto.setMiddleName(middleName);
+		int size = title.length;
+		for(int i=0;i<=size-1;i++) {
+			passengerDetails.setTitle(passengerDetailsRequestDto.getTitle(i));
+			passengerDetails.setFirstName(passengerDetailsRequestDto.getFirstName(i));
+			passengerDetails.setMiddleName(passengerDetailsRequestDto.getMiddleName(i));
+			passengerDetails.setLastName(passengerDetailsRequestDto.getLastName(i));
+			SavePassengerDetails.savePassengerDetails(passengerDetails);
+		}
+	
 	}
-	
-	
 }
