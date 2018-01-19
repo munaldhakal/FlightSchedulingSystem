@@ -10,6 +10,7 @@
 <link href="css/full-slider.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <script src="js/jquery.min.js"></script>
+<script src="js/cookie.js"></script>
 <script type="text/javascript">
 <!--
 	$(document).ready(
@@ -31,14 +32,22 @@
 									'td:eq(5)').text(), 10);
 							var fuelcharge = 1500;
 							var airporttax = 500;
-							var totalcharge = fare + fuelcharge + airporttax;
+							json_str = getCookie('travelDetails');
+						    arr = JSON.parse(json_str);
+						    var noOfPeople = parseInt(arr[0])+parseInt(arr[1]);
+							var singlecharge = fare + fuelcharge + airporttax;
+							var totalcharge=singlecharge*noOfPeople;
 							$('.fare').text(
 									$(this).closest('tr').find('td:eq(5)')
 											.text());
+							$('.singlefare').text(singlecharge);
 							$('.totalfare').text(totalcharge);
 							$('.airporttax').text(airporttax);
 							$('.fuelcharge').text(fuelcharge);
-							//$('.pass').text($(this).closest('tr').find('td:eq(1)').text());		
+							setCookie("FlightId",id,0.02);
+							setCookie("TotalFare",totalcharge,0.02);
+							setCookie("ArrivalTime",arrivalTime,0.02);
+							setCookie("DepartureTime",departureTime,0.02);
 						});
 			});
 //-->
@@ -88,9 +97,10 @@
 			<td>Airport tax: <span class="airporttax"></span></td>
 		</tr>
 		<tr>
+		<td>Single Charge: <span class="singlefare"></span></td>
+		</tr>
+		<tr>
 			<td><hr>Total Fare: <span class="totalfare"></span></td>
-			<td></td>
-			<td></td>
 			<td><a class="btn btn-success" href="passenger.html">Next</a></td>
 		</tr>
 		</tbody>

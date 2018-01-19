@@ -14,14 +14,13 @@ function setCookie(cname, cvalue, exdays) {
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
-      for(var i = 0; i < ca.length; i++) {
-        var c = ca[i]; 
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
-        }    
+        }
         if (c.indexOf(name) == 0) {
-            var finalOutput = c.substring(name.length, c.length);           
-            return finalOutput;
+            return c.substring(name.length, c.length);
         }
     }
     return "";
@@ -34,5 +33,5 @@ function setTravelDetails(){
 	arr.push(arrivalPlace);
 	arr.push(date);
 	json_str = JSON.stringify(arr);
-	setCookie('traelDetails',json_str,0.0208);
+	setCookie('travelDetails',json_str,0.0208);
 }
